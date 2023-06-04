@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b46864ea01104a52b145948f9c891479" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="EventMSModel.Billing" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Cattering" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Cattering_Type" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Customer" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Event" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Music" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Music_Type" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Staff" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.sysdiagram" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Ticket" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Transport" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.User" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventMSModel.Venue" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="EventMSModel.FK__Billing__C_ID__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Billing__Event_I__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Billing__Ticket___44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Cattering__CT_Ty__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Event__Cattering__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__User__C_ID__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Event__Music_ID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Event__Transport__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Event__Venue_ID__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Ticket__Event_ID__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__Music__M_Type__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="EventMSModel.FK__User__Staff_ID__300424B4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

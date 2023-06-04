@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Event_M_System.Models.Transport>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Event Manegement", "Index", "Default", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Staffs", "Index", "Staffs", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Events", "Index", "Events", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Tickets", "Index", "Tickets", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Transports", "Index", "Transports", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Users", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Venues", "Index", "Venues", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Billings", "Index", "Billings", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Catterings", "Index", "Catterings", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Cattering_Type", "Index", "Cattering_Type", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Musics", "Index", "Musics", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Music_Type", "Index", "Music_Type", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Logout", "Index", "Default", new { area = "" }, new { @class = "navbar-brand" })
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div>
+    </div>
+</div>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle_Company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle_Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Transport_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Transport_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Transport_ID })
+            </td>
+        </tr>
+    }
+
+</table>

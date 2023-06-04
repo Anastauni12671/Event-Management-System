@@ -1,0 +1,56 @@
+﻿@model Event_M_System.Models.Ticket
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Event Manegement", "Index", "Default", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Staffs", "Index", "Staffs", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Events", "Index", "Events", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Tickets", "Index", "Tickets", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Transports", "Index", "Transports", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Users", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Venues", "Index", "Venues", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Billings", "Index", "Billings", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Catterings", "Index", "Catterings", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Cattering_Type", "Index", "Cattering_Type", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Musics", "Index", "Musics", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Music_Type", "Index", "Music_Type", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Logout", "Index", "Default", new { area = "" }, new { @class = "navbar-brand" })
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div>
+    </div>
+</div>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Event.Event_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Event.Event_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ticket_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

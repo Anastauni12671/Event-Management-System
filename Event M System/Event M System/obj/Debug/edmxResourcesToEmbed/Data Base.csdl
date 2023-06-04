@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Billing">
+    <Key>
+      <PropertyRef Name="Bill_ID" />
+    </Key>
+    <Property Name="Bill_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_ID" Type="Int32" />
+    <Property Name="Event_ID" Type="Int32" />
+    <Property Name="Ticket_ID" Type="Int32" />
+    <Property Name="Transport" Type="Int32" />
+    <Property Name="Food" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Billing__C_ID__4316F928" FromRole="Billing" ToRole="Customer" />
+    <NavigationProperty Name="Event" Relationship="Self.FK__Billing__Event_I__440B1D61" FromRole="Billing" ToRole="Event" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK__Billing__Ticket___44FF419A" FromRole="Billing" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Cattering">
+    <Key>
+      <PropertyRef Name="Cattering_ID" />
+    </Key>
+    <Property Name="Cattering_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CT_Type" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="Cattering_Type" Relationship="Self.FK__Cattering__CT_Ty__35BCFE0A" FromRole="Cattering" ToRole="Cattering_Type" />
+    <NavigationProperty Name="Events" Relationship="Self.FK__Event__Cattering__3B75D760" FromRole="Cattering" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Cattering_Type">
+    <Key>
+      <PropertyRef Name="CT_ID" />
+    </Key>
+    <Property Name="CT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Catterings" Relationship="Self.FK__Cattering__CT_Ty__35BCFE0A" FromRole="Cattering_Type" ToRole="Cattering" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="User_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Confirm_Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Billings" Relationship="Self.FK__Billing__C_ID__4316F928" FromRole="Customer" ToRole="Billing" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__User__C_ID__30F848ED" FromRole="Customer" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Event_ID" />
+    </Key>
+    <Property Name="Event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Venue_ID" Type="Int32" />
+    <Property Name="Cattering_ID" Type="Int32" />
+    <Property Name="Transport_ID" Type="Int32" />
+    <Property Name="Music_ID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="price" Type="Int32" />
+    <NavigationProperty Name="Billings" Relationship="Self.FK__Billing__Event_I__440B1D61" FromRole="Event" ToRole="Billing" />
+    <NavigationProperty Name="Cattering" Relationship="Self.FK__Event__Cattering__3B75D760" FromRole="Event" ToRole="Cattering" />
+    <NavigationProperty Name="Music" Relationship="Self.FK__Event__Music_ID__3D5E1FD2" FromRole="Event" ToRole="Music" />
+    <NavigationProperty Name="Transport" Relationship="Self.FK__Event__Transport__3C69FB99" FromRole="Event" ToRole="Transport" />
+    <NavigationProperty Name="Venue" Relationship="Self.FK__Event__Venue_ID__3A81B327" FromRole="Event" ToRole="Venue" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK__Ticket__Event_ID__403A8C7D" FromRole="Event" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Music">
+    <Key>
+      <PropertyRef Name="M_ID" />
+    </Key>
+    <Property Name="M_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="M_Type" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Singer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK__Event__Music_ID__3D5E1FD2" FromRole="Music" ToRole="Event" />
+    <NavigationProperty Name="Music_Type" Relationship="Self.FK__Music__M_Type__267ABA7A" FromRole="Music" ToRole="Music_Type" />
+  </EntityType>
+  <EntityType Name="Music_Type">
+    <Key>
+      <PropertyRef Name="MT_ID" />
+    </Key>
+    <Property Name="MT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Musics" Relationship="Self.FK__Music__M_Type__267ABA7A" FromRole="Music_Type" ToRole="Music" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Staff_ID" />
+    </Key>
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="User_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Designation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Confirm_Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__User__Staff_ID__300424B4" FromRole="Staff" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Ticket_ID" />
+    </Key>
+    <Property Name="Ticket_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_ID" Type="Int32" />
+    <NavigationProperty Name="Billings" Relationship="Self.FK__Billing__Ticket___44FF419A" FromRole="Ticket" ToRole="Billing" />
+    <NavigationProperty Name="Event" Relationship="Self.FK__Ticket__Event_ID__403A8C7D" FromRole="Ticket" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Transport">
+    <Key>
+      <PropertyRef Name="Transport_ID" />
+    </Key>
+    <Property Name="Transport_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vehicle_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Company" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_No" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="Events" Relationship="Self.FK__Event__Transport__3C69FB99" FromRole="Transport" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="U_ID" />
+    </Key>
+    <Property Name="U_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_ID" Type="Int32" />
+    <Property Name="C_ID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__User__C_ID__30F848ED" FromRole="User" ToRole="Customer" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK__User__Staff_ID__300424B4" FromRole="User" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Venue">
+    <Key>
+      <PropertyRef Name="V_ID" />
+    </Key>
+    <Property Name="V_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="V_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Events" Relationship="Self.FK__Event__Venue_ID__3A81B327" FromRole="Venue" ToRole="Event" />
+  </EntityType>
+  <Association Name="FK__Billing__C_ID__4316F928">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="C_ID" />
+      </Principal>
+      <Dependent Role="Billing">
+        <PropertyRef Name="C_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Billing__Event_I__440B1D61">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Billing">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Billing__Ticket___44FF419A">
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="0..1" />
+    <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="Ticket_ID" />
+      </Principal>
+      <Dependent Role="Billing">
+        <PropertyRef Name="Ticket_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cattering__CT_Ty__35BCFE0A">
+    <End Role="Cattering_Type" Type="Self.Cattering_Type" Multiplicity="0..1" />
+    <End Role="Cattering" Type="Self.Cattering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cattering_Type">
+        <PropertyRef Name="CT_ID" />
+      </Principal>
+      <Dependent Role="Cattering">
+        <PropertyRef Name="CT_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Event__Cattering__3B75D760">
+    <End Role="Cattering" Type="Self.Cattering" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cattering">
+        <PropertyRef Name="Cattering_ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Cattering_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__C_ID__30F848ED">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="C_ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="C_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Event__Music_ID__3D5E1FD2">
+    <End Role="Music" Type="Self.Music" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Music">
+        <PropertyRef Name="M_ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Music_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Event__Transport__3C69FB99">
+    <End Role="Transport" Type="Self.Transport" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transport">
+        <PropertyRef Name="Transport_ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Transport_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Event__Venue_ID__3A81B327">
+    <End Role="Venue" Type="Self.Venue" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venue">
+        <PropertyRef Name="V_ID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="Venue_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__Event_ID__403A8C7D">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="Event_ID" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="Event_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Music__M_Type__267ABA7A">
+    <End Role="Music_Type" Type="Self.Music_Type" Multiplicity="0..1" />
+    <End Role="Music" Type="Self.Music" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Music_Type">
+        <PropertyRef Name="MT_ID" />
+      </Principal>
+      <Dependent Role="Music">
+        <PropertyRef Name="M_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__Staff_ID__300424B4">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EventMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Billings" EntityType="Self.Billing" />
+    <EntitySet Name="Catterings" EntityType="Self.Cattering" />
+    <EntitySet Name="Cattering_Type" EntityType="Self.Cattering_Type" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Musics" EntityType="Self.Music" />
+    <EntitySet Name="Music_Type" EntityType="Self.Music_Type" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+    <EntitySet Name="Transports" EntityType="Self.Transport" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Venues" EntityType="Self.Venue" />
+    <AssociationSet Name="FK__Billing__C_ID__4316F928" Association="Self.FK__Billing__C_ID__4316F928">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Billing" EntitySet="Billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Billing__Event_I__440B1D61" Association="Self.FK__Billing__Event_I__440B1D61">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Billing" EntitySet="Billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Billing__Ticket___44FF419A" Association="Self.FK__Billing__Ticket___44FF419A">
+      <End Role="Ticket" EntitySet="Tickets" />
+      <End Role="Billing" EntitySet="Billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cattering__CT_Ty__35BCFE0A" Association="Self.FK__Cattering__CT_Ty__35BCFE0A">
+      <End Role="Cattering_Type" EntitySet="Cattering_Type" />
+      <End Role="Cattering" EntitySet="Catterings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Event__Cattering__3B75D760" Association="Self.FK__Event__Cattering__3B75D760">
+      <End Role="Cattering" EntitySet="Catterings" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__C_ID__30F848ED" Association="Self.FK__User__C_ID__30F848ED">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Event__Music_ID__3D5E1FD2" Association="Self.FK__Event__Music_ID__3D5E1FD2">
+      <End Role="Music" EntitySet="Musics" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Event__Transport__3C69FB99" Association="Self.FK__Event__Transport__3C69FB99">
+      <End Role="Transport" EntitySet="Transports" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Event__Venue_ID__3A81B327" Association="Self.FK__Event__Venue_ID__3A81B327">
+      <End Role="Venue" EntitySet="Venues" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__Event_ID__403A8C7D" Association="Self.FK__Ticket__Event_ID__403A8C7D">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Music__M_Type__267ABA7A" Association="Self.FK__Music__M_Type__267ABA7A">
+      <End Role="Music_Type" EntitySet="Music_Type" />
+      <End Role="Music" EntitySet="Musics" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__Staff_ID__300424B4" Association="Self.FK__User__Staff_ID__300424B4">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(EventMSModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(EventMSModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

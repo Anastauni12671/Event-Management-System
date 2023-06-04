@@ -1,0 +1,81 @@
+﻿@model Event_M_System.Models.Music
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Event Manegement", "Index", "Default", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Staffs", "Index", "Staffs", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Events", "Index", "Events", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Tickets", "Index", "Tickets", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Transports", "Index", "Transports", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Users", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Venues", "Index", "Venues", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Billings", "Index", "Billings", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Catterings", "Index", "Catterings", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Cattering_Type", "Index", "Cattering_Type", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Musics", "Index", "Musics", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Music_Type", "Index", "Music_Type", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Logout", "Index", "Default", new { area = "" }, new { @class = "navbar-brand" })
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div>
+    </div>
+</div>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Music</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.M_Type, "M_Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("M_Type", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.M_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Singer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Singer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Singer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
